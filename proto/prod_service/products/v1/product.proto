@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package prod_service.products.v1;
 
-option go_package = "production_service/gen/go/prod/products/v1;pb_prod_products";
+option go_package = "github.com/theartofdevel/production-service-contracts/gen/go/prod/products/v1;pb_prod_products";
 
 message Product {
   // Identifier

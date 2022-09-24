@@ -3,6 +3,7 @@ module github.com/theartofdevel/production-service-contracts/gen/go/prod_service
 go 1.18
 
 require (
+	github.com/theartofdevel/production-service-contracts/gen/go/common v0.0.0-20220924230123-dcfd01f92e8b
 	google.golang.org/grpc v1.49.0
 	google.golang.org/protobuf v1.28.1
 )
