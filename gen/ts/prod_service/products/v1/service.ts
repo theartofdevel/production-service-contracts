@@ -35,9 +35,9 @@ export interface ProductServiceCreateProductRequest {
     /**
      * Image ID
      *
-     * @generated from protobuf field: string image_id = 3;
+     * @generated from protobuf field: optional string image_id = 3;
      */
-    imageId: string;
+    imageId?: string;
     /**
      * Price
      *
@@ -122,7 +122,7 @@ class ProductServiceCreateProductRequest$Type extends MessageType<ProductService
         super("prod_service.products.v1.ProductServiceCreateProductRequest", [
             { no: 1, name: "name", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
             { no: 2, name: "description", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
-            { no: 3, name: "image_id", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
+            { no: 3, name: "image_id", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
             { no: 4, name: "price", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
             { no: 5, name: "currency_id", kind: "scalar", T: 13 /*ScalarType.UINT32*/ },
             { no: 6, name: "rating", kind: "scalar", T: 13 /*ScalarType.UINT32*/ },
@@ -131,7 +131,7 @@ class ProductServiceCreateProductRequest$Type extends MessageType<ProductService
         ]);
     }
     create(value?: PartialMessage<ProductServiceCreateProductRequest>): ProductServiceCreateProductRequest {
-        const message = { name: "", description: "", imageId: "", price: "", currencyId: 0, rating: 0, categoryId: "", specification: "" };
+        const message = { name: "", description: "", price: "", currencyId: 0, rating: 0, categoryId: "", specification: "" };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<ProductServiceCreateProductRequest>(this, message, value);
@@ -148,7 +148,7 @@ class ProductServiceCreateProductRequest$Type extends MessageType<ProductService
                 case /* string description */ 2:
                     message.description = reader.string();
                     break;
-                case /* string image_id */ 3:
+                case /* optional string image_id */ 3:
                     message.imageId = reader.string();
                     break;
                 case /* string price */ 4:
@@ -184,8 +184,8 @@ class ProductServiceCreateProductRequest$Type extends MessageType<ProductService
         /* string description = 2; */
         if (message.description !== "")
             writer.tag(2, WireType.LengthDelimited).string(message.description);
-        /* string image_id = 3; */
-        if (message.imageId !== "")
+        /* optional string image_id = 3; */
+        if (message.imageId !== undefined)
             writer.tag(3, WireType.LengthDelimited).string(message.imageId);
         /* string price = 4; */
         if (message.price !== "")
