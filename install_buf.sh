@@ -8,9 +8,9 @@ OS=`lowercase \`uname\``
 KERNEL=`uname -r`
 MACH=`uname -m`
 
-if [ "{$OS}" == "windowsnt" ]; then
+if [ "${OS}" == "windowsnt" ]; then
     OS=windows
-elif [ "{$OS}" == "darwin" ]; then
+elif [ "${OS}" == "darwin" ]; then
     OS=mac
 else
     OS=`uname`
@@ -73,6 +73,7 @@ mkdir /tmp/buf_install
 echo "cd /tmp/buf_install || exit"
 cd /tmp/buf_install || exit
 
+echo "Downloading for $OS and $MACH"
 if [ "$OS" = "Darwin" ] && [ "$MACH" = arm64 ]; then
   curl -L -o buf https://github.com/bufbuild/buf/releases/download/v$BUF_VERSION/buf-Darwin-arm64
 elif [ "$OS" = "Darwin" ] && [ "$MACH" = i386 ]; then

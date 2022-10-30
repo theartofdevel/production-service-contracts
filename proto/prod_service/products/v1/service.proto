@@ -5,14 +5,15 @@ package prod_service.products.v1;
 option go_package = "github.com/theartofdevel/production-service-contracts/gen/go/prod/products/v1;pb_prod_products";
 
 import "common/filter/v1/filter.proto";
+import "common/filter/v1/sort.proto";
 import "prod_service/products/v1/product.proto";
 
 service ProductService {
-  rpc CreateProduct(ProductServiceCreateProductRequest) returns (ProductServiceCreateProductResponse) {}
-  rpc AllProducts(ProductServiceAllProductsRequest) returns (ProductServiceAllProductsResponse) {}
+  rpc CreateProduct(CreateProductRequest) returns (CreateProductResponse) {}
+  rpc AllProducts(AllProductsRequest) returns (AllProductsResponse) {}
 }
 
-message ProductServiceCreateProductRequest {
+message CreateProductRequest {
   // Name
   string name = 1;
   // Description
@@ -31,19 +32,20 @@ message ProductServiceCreateProductRequest {
   string specification = 8;
 }
 
-message ProductServiceCreateProductResponse {
+message CreateProductResponse {
   Product product = 1;
 }
 
-message ProductServiceAllProductsRequest {
+message AllProductsRequest {
   common.filter.v1.Pagination pagination = 1;
   common.filter.v1.StringFieldFilter name = 2;
   common.filter.v1.StringFieldFilter description = 3;
   common.filter.v1.IntFieldFilter price = 4;
   common.filter.v1.IntFieldFilter rating = 5;
-  common.filter.v1.StringFieldFilter category_id = 6;
+  common.filter.v1.IntFieldFilter category_id = 6;
+  common.filter.v1.Sort sort = 7;
 }
 
-message ProductServiceAllProductsResponse {
+message AllProductsResponse {
   repeated Product products = 1;
 }

@@ -12,14 +12,15 @@ import type { PartialMessage } from "@protobuf-ts/runtime";
 import { reflectionMergePartial } from "@protobuf-ts/runtime";
 import { MESSAGE_TYPE } from "@protobuf-ts/runtime";
 import { MessageType } from "@protobuf-ts/runtime";
+import { Sort } from "../../../common/filter/v1/sort";
 import { IntFieldFilter } from "../../../common/filter/v1/filter";
 import { StringFieldFilter } from "../../../common/filter/v1/filter";
 import { Pagination } from "../../../common/filter/v1/filter";
 import { Product } from "./product";
 /**
- * @generated from protobuf message prod_service.products.v1.ProductServiceCreateProductRequest
+ * @generated from protobuf message prod_service.products.v1.CreateProductRequest
  */
-export interface ProductServiceCreateProductRequest {
+export interface CreateProductRequest {
     /**
      * Name
      *
@@ -70,18 +71,18 @@ export interface ProductServiceCreateProductRequest {
     specification: string;
 }
 /**
- * @generated from protobuf message prod_service.products.v1.ProductServiceCreateProductResponse
+ * @generated from protobuf message prod_service.products.v1.CreateProductResponse
  */
-export interface ProductServiceCreateProductResponse {
+export interface CreateProductResponse {
     /**
      * @generated from protobuf field: prod_service.products.v1.Product product = 1;
      */
     product?: Product;
 }
 /**
- * @generated from protobuf message prod_service.products.v1.ProductServiceAllProductsRequest
+ * @generated from protobuf message prod_service.products.v1.AllProductsRequest
  */
-export interface ProductServiceAllProductsRequest {
+export interface AllProductsRequest {
     /**
      * @generated from protobuf field: common.filter.v1.Pagination pagination = 1;
      */
@@ -103,23 +104,27 @@ export interface ProductServiceAllProductsRequest {
      */
     rating?: IntFieldFilter;
     /**
-     * @generated from protobuf field: common.filter.v1.StringFieldFilter category_id = 6;
+     * @generated from protobuf field: common.filter.v1.IntFieldFilter category_id = 6;
      */
-    categoryId?: StringFieldFilter;
+    categoryId?: IntFieldFilter;
+    /**
+     * @generated from protobuf field: common.filter.v1.Sort sort = 7;
+     */
+    sort?: Sort;
 }
 /**
- * @generated from protobuf message prod_service.products.v1.ProductServiceAllProductsResponse
+ * @generated from protobuf message prod_service.products.v1.AllProductsResponse
  */
-export interface ProductServiceAllProductsResponse {
+export interface AllProductsResponse {
     /**
      * @generated from protobuf field: repeated prod_service.products.v1.Product products = 1;
      */
     products: Product[];
 }
 // @generated message type with reflection information, may provide speed optimized methods
-class ProductServiceCreateProductRequest$Type extends MessageType<ProductServiceCreateProductRequest> {
+class CreateProductRequest$Type extends MessageType<CreateProductRequest> {
     constructor() {
-        super("prod_service.products.v1.ProductServiceCreateProductRequest", [
+        super("prod_service.products.v1.CreateProductRequest", [
             { no: 1, name: "name", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
             { no: 2, name: "description", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
             { no: 3, name: "image_id", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
@@ -130,14 +135,14 @@ class ProductServiceCreateProductRequest$Type extends MessageType<ProductService
             { no: 8, name: "specification", kind: "scalar", T: 9 /*ScalarType.STRING*/ }
         ]);
     }
-    create(value?: PartialMessage<ProductServiceCreateProductRequest>): ProductServiceCreateProductRequest {
+    create(value?: PartialMessage<CreateProductRequest>): CreateProductRequest {
         const message = { name: "", description: "", price: "", currencyId: 0, rating: 0, categoryId: "", specification: "" };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
-            reflectionMergePartial<ProductServiceCreateProductRequest>(this, message, value);
+            reflectionMergePartial<CreateProductRequest>(this, message, value);
         return message;
     }
-    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: ProductServiceCreateProductRequest): ProductServiceCreateProductRequest {
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: CreateProductRequest): CreateProductRequest {
         let message = target ?? this.create(), end = reader.pos + length;
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
@@ -177,7 +182,7 @@ class ProductServiceCreateProductRequest$Type extends MessageType<ProductService
         }
         return message;
     }
-    internalBinaryWrite(message: ProductServiceCreateProductRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+    internalBinaryWrite(message: CreateProductRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* string name = 1; */
         if (message.name !== "")
             writer.tag(1, WireType.LengthDelimited).string(message.name);
@@ -209,24 +214,24 @@ class ProductServiceCreateProductRequest$Type extends MessageType<ProductService
     }
 }
 /**
- * @generated MessageType for protobuf message prod_service.products.v1.ProductServiceCreateProductRequest
+ * @generated MessageType for protobuf message prod_service.products.v1.CreateProductRequest
  */
-export const ProductServiceCreateProductRequest = new ProductServiceCreateProductRequest$Type();
+export const CreateProductRequest = new CreateProductRequest$Type();
 // @generated message type with reflection information, may provide speed optimized methods
-class ProductServiceCreateProductResponse$Type extends MessageType<ProductServiceCreateProductResponse> {
+class CreateProductResponse$Type extends MessageType<CreateProductResponse> {
     constructor() {
-        super("prod_service.products.v1.ProductServiceCreateProductResponse", [
+        super("prod_service.products.v1.CreateProductResponse", [
             { no: 1, name: "product", kind: "message", T: () => Product }
         ]);
     }
-    create(value?: PartialMessage<ProductServiceCreateProductResponse>): ProductServiceCreateProductResponse {
+    create(value?: PartialMessage<CreateProductResponse>): CreateProductResponse {
         const message = {};
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
-            reflectionMergePartial<ProductServiceCreateProductResponse>(this, message, value);
+            reflectionMergePartial<CreateProductResponse>(this, message, value);
         return message;
     }
-    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: ProductServiceCreateProductResponse): ProductServiceCreateProductResponse {
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: CreateProductResponse): CreateProductResponse {
         let message = target ?? this.create(), end = reader.pos + length;
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
@@ -245,7 +250,7 @@ class ProductServiceCreateProductResponse$Type extends MessageType<ProductServic
         }
         return message;
     }
-    internalBinaryWrite(message: ProductServiceCreateProductResponse, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+    internalBinaryWrite(message: CreateProductResponse, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* prod_service.products.v1.Product product = 1; */
         if (message.product)
             Product.internalBinaryWrite(message.product, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
@@ -256,29 +261,30 @@ class ProductServiceCreateProductResponse$Type extends MessageType<ProductServic
     }
 }
 /**
- * @generated MessageType for protobuf message prod_service.products.v1.ProductServiceCreateProductResponse
+ * @generated MessageType for protobuf message prod_service.products.v1.CreateProductResponse
  */
-export const ProductServiceCreateProductResponse = new ProductServiceCreateProductResponse$Type();
+export const CreateProductResponse = new CreateProductResponse$Type();
 // @generated message type with reflection information, may provide speed optimized methods
-class ProductServiceAllProductsRequest$Type extends MessageType<ProductServiceAllProductsRequest> {
+class AllProductsRequest$Type extends MessageType<AllProductsRequest> {
     constructor() {
-        super("prod_service.products.v1.ProductServiceAllProductsRequest", [
+        super("prod_service.products.v1.AllProductsRequest", [
             { no: 1, name: "pagination", kind: "message", T: () => Pagination },
             { no: 2, name: "name", kind: "message", T: () => StringFieldFilter },
             { no: 3, name: "description", kind: "message", T: () => StringFieldFilter },
             { no: 4, name: "price", kind: "message", T: () => IntFieldFilter },
             { no: 5, name: "rating", kind: "message", T: () => IntFieldFilter },
-            { no: 6, name: "category_id", kind: "message", T: () => StringFieldFilter }
+            { no: 6, name: "category_id", kind: "message", T: () => IntFieldFilter },
+            { no: 7, name: "sort", kind: "message", T: () => Sort }
         ]);
     }
-    create(value?: PartialMessage<ProductServiceAllProductsRequest>): ProductServiceAllProductsRequest {
+    create(value?: PartialMessage<AllProductsRequest>): AllProductsRequest {
         const message = {};
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
-            reflectionMergePartial<ProductServiceAllProductsRequest>(this, message, value);
+            reflectionMergePartial<AllProductsRequest>(this, message, value);
         return message;
     }
-    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: ProductServiceAllProductsRequest): ProductServiceAllProductsRequest {
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: AllProductsRequest): AllProductsRequest {
         let message = target ?? this.create(), end = reader.pos + length;
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
@@ -298,8 +304,11 @@ class ProductServiceAllProductsRequest$Type extends MessageType<ProductServiceAl
                 case /* common.filter.v1.IntFieldFilter rating */ 5:
                     message.rating = IntFieldFilter.internalBinaryRead(reader, reader.uint32(), options, message.rating);
                     break;
-                case /* common.filter.v1.StringFieldFilter category_id */ 6:
-                    message.categoryId = StringFieldFilter.internalBinaryRead(reader, reader.uint32(), options, message.categoryId);
+                case /* common.filter.v1.IntFieldFilter category_id */ 6:
+                    message.categoryId = IntFieldFilter.internalBinaryRead(reader, reader.uint32(), options, message.categoryId);
+                    break;
+                case /* common.filter.v1.Sort sort */ 7:
+                    message.sort = Sort.internalBinaryRead(reader, reader.uint32(), options, message.sort);
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -312,7 +321,7 @@ class ProductServiceAllProductsRequest$Type extends MessageType<ProductServiceAl
         }
         return message;
     }
-    internalBinaryWrite(message: ProductServiceAllProductsRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+    internalBinaryWrite(message: AllProductsRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* common.filter.v1.Pagination pagination = 1; */
         if (message.pagination)
             Pagination.internalBinaryWrite(message.pagination, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
@@ -328,9 +337,12 @@ class ProductServiceAllProductsRequest$Type extends MessageType<ProductServiceAl
         /* common.filter.v1.IntFieldFilter rating = 5; */
         if (message.rating)
             IntFieldFilter.internalBinaryWrite(message.rating, writer.tag(5, WireType.LengthDelimited).fork(), options).join();
-        /* common.filter.v1.StringFieldFilter category_id = 6; */
+        /* common.filter.v1.IntFieldFilter category_id = 6; */
         if (message.categoryId)
-            StringFieldFilter.internalBinaryWrite(message.categoryId, writer.tag(6, WireType.LengthDelimited).fork(), options).join();
+            IntFieldFilter.internalBinaryWrite(message.categoryId, writer.tag(6, WireType.LengthDelimited).fork(), options).join();
+        /* common.filter.v1.Sort sort = 7; */
+        if (message.sort)
+            Sort.internalBinaryWrite(message.sort, writer.tag(7, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -338,24 +350,24 @@ class ProductServiceAllProductsRequest$Type extends MessageType<ProductServiceAl
     }
 }
 /**
- * @generated MessageType for protobuf message prod_service.products.v1.ProductServiceAllProductsRequest
+ * @generated MessageType for protobuf message prod_service.products.v1.AllProductsRequest
  */
-export const ProductServiceAllProductsRequest = new ProductServiceAllProductsRequest$Type();
+export const AllProductsRequest = new AllProductsRequest$Type();
 // @generated message type with reflection information, may provide speed optimized methods
-class ProductServiceAllProductsResponse$Type extends MessageType<ProductServiceAllProductsResponse> {
+class AllProductsResponse$Type extends MessageType<AllProductsResponse> {
     constructor() {
-        super("prod_service.products.v1.ProductServiceAllProductsResponse", [
+        super("prod_service.products.v1.AllProductsResponse", [
             { no: 1, name: "products", kind: "message", repeat: 1 /*RepeatType.PACKED*/, T: () => Product }
         ]);
     }
-    create(value?: PartialMessage<ProductServiceAllProductsResponse>): ProductServiceAllProductsResponse {
+    create(value?: PartialMessage<AllProductsResponse>): AllProductsResponse {
         const message = { products: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
-            reflectionMergePartial<ProductServiceAllProductsResponse>(this, message, value);
+            reflectionMergePartial<AllProductsResponse>(this, message, value);
         return message;
     }
-    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: ProductServiceAllProductsResponse): ProductServiceAllProductsResponse {
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: AllProductsResponse): AllProductsResponse {
         let message = target ?? this.create(), end = reader.pos + length;
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
@@ -374,7 +386,7 @@ class ProductServiceAllProductsResponse$Type extends MessageType<ProductServiceA
         }
         return message;
     }
-    internalBinaryWrite(message: ProductServiceAllProductsResponse, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+    internalBinaryWrite(message: AllProductsResponse, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* repeated prod_service.products.v1.Product products = 1; */
         for (let i = 0; i < message.products.length; i++)
             Product.internalBinaryWrite(message.products[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
@@ -385,13 +397,13 @@ class ProductServiceAllProductsResponse$Type extends MessageType<ProductServiceA
     }
 }
 /**
- * @generated MessageType for protobuf message prod_service.products.v1.ProductServiceAllProductsResponse
+ * @generated MessageType for protobuf message prod_service.products.v1.AllProductsResponse
  */
-export const ProductServiceAllProductsResponse = new ProductServiceAllProductsResponse$Type();
+export const AllProductsResponse = new AllProductsResponse$Type();
 /**
  * @generated ServiceType for protobuf service prod_service.products.v1.ProductService
  */
 export const ProductService = new ServiceType("prod_service.products.v1.ProductService", [
-    { name: "CreateProduct", options: {}, I: ProductServiceCreateProductRequest, O: ProductServiceCreateProductResponse },
-    { name: "AllProducts", options: {}, I: ProductServiceAllProductsRequest, O: ProductServiceAllProductsResponse }
+    { name: "CreateProduct", options: {}, I: CreateProductRequest, O: CreateProductResponse },
+    { name: "AllProducts", options: {}, I: AllProductsRequest, O: AllProductsResponse }
 ]);

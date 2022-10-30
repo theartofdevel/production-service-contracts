@@ -3,12 +3,8 @@ BUF_VERSION=1.6.0
 .PHONY: proto
 proto: clean format gen lint
 
-.PHONY: buf-install
-buf-install:
-	$(shell ./install_buf.sh)
-
 .PHONY: gen
-gen: buf-install
+gen:
 	@$(GOPATH)/bin/buf generate
 	@for dir in $(CURDIR)/gen/go/*/; do \
 	  cd $$dir && \
@@ -16,11 +12,11 @@ gen: buf-install
   	done
 
 .PHONY: lint
-lint: buf-install
+lint:
 	@$(GOPATH)/bin/buf lint
 
 .PHONY: format
-format: buf-install
+format:
 	@$(GOPATH)/bin/buf format
 
 

@@ -44,6 +44,25 @@
         }
       }
     },
+    "v1AllProductsResponse": {
+      "type": "object",
+      "properties": {
+        "products": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Product"
+          }
+        }
+      }
+    },
+    "v1CreateProductResponse": {
+      "type": "object",
+      "properties": {
+        "product": {
+          "$ref": "#/definitions/v1Product"
+        }
+      }
+    },
     "v1IntFieldFilter": {
       "type": "object",
       "properties": {
@@ -135,24 +154,14 @@
         }
       }
     },
-    "v1ProductServiceAllProductsResponse": {
+    "v1Sort": {
       "type": "object",
       "properties": {
-        "products": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/v1Product"
-          }
+        "field": {
+          "type": "string"
         }
-      }
-    },
-    "v1ProductServiceCreateProductResponse": {
-      "type": "object",
-      "properties": {
-        "product": {
-          "$ref": "#/definitions/v1Product"
-        }
-      }
+      },
+      "title": "Sorting array"
     },
     "v1StringFieldFilter": {
       "type": "object",
