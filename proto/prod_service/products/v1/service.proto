@@ -21,13 +21,13 @@ message CreateProductRequest {
   // Image ID
   optional string image_id = 3;
   // Price
-  string price = 4;
+  uint64 price = 4;
   // Prince Currency
   uint32 currency_id = 5;
   // Rating
   uint32 rating = 6;
   // Category ID
-  string category_id = 7;
+  uint32 category_id = 7;
   // Specification
   string specification = 8;
 }

@@ -12,15 +12,15 @@ message Product {
   // Description
   string description = 3;
   // Image ID
-  string image_id = 4;
+  optional string image_id = 4;
   // Price
-  string price = 5;
+  uint64 price = 5;
   // Prince Currency
   uint32 currency_id = 6;
   // Rating
   uint32 rating = 7;
   // Category ID
-  string category_id = 8;
+  uint32 category_id = 8;
   // Specification
   string specification = 9;
   // Updated at

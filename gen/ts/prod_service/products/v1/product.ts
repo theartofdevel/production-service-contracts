@@ -36,13 +36,13 @@ export interface Product {
     /**
      * Image ID
      *
-     * @generated from protobuf field: string image_id = 4;
+     * @generated from protobuf field: optional string image_id = 4;
      */
-    imageId: string;
+    imageId?: string;
     /**
      * Price
      *
-     * @generated from protobuf field: string price = 5;
+     * @generated from protobuf field: uint64 price = 5;
      */
     price: string;
     /**
@@ -60,9 +60,9 @@ export interface Product {
     /**
      * Category ID
      *
-     * @generated from protobuf field: string category_id = 8;
+     * @generated from protobuf field: uint32 category_id = 8;
      */
-    categoryId: string;
+    categoryId: number;
     /**
      * Specification
      *
@@ -89,18 +89,18 @@ class Product$Type extends MessageType<Product> {
             { no: 1, name: "id", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
             { no: 2, name: "name", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
             { no: 3, name: "description", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
-            { no: 4, name: "image_id", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
-            { no: 5, name: "price", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
+            { no: 4, name: "image_id", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
+            { no: 5, name: "price", kind: "scalar", T: 4 /*ScalarType.UINT64*/ },
             { no: 6, name: "currency_id", kind: "scalar", T: 13 /*ScalarType.UINT32*/ },
             { no: 7, name: "rating", kind: "scalar", T: 13 /*ScalarType.UINT32*/ },
-            { no: 8, name: "category_id", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
+            { no: 8, name: "category_id", kind: "scalar", T: 13 /*ScalarType.UINT32*/ },
             { no: 9, name: "specification", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
             { no: 10, name: "updated_at", kind: "scalar", T: 3 /*ScalarType.INT64*/ },
             { no: 11, name: "created_at", kind: "scalar", T: 3 /*ScalarType.INT64*/ }
         ]);
     }
     create(value?: PartialMessage<Product>): Product {
-        const message = { id: "", name: "", description: "", imageId: "", price: "", currencyId: 0, rating: 0, categoryId: "", specification: "", updatedAt: "0", createdAt: "0" };
+        const message = { id: "", name: "", description: "", price: "0", currencyId: 0, rating: 0, categoryId: 0, specification: "", updatedAt: "0", createdAt: "0" };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<Product>(this, message, value);
@@ -120,11 +120,11 @@ class Product$Type extends MessageType<Product> {
                 case /* string description */ 3:
                     message.description = reader.string();
                     break;
-                case /* string image_id */ 4:
+                case /* optional string image_id */ 4:
                     message.imageId = reader.string();
                     break;
-                case /* string price */ 5:
-                    message.price = reader.string();
+                case /* uint64 price */ 5:
+                    message.price = reader.uint64().toString();
                     break;
                 case /* uint32 currency_id */ 6:
                     message.currencyId = reader.uint32();
@@ -132,8 +132,8 @@ class Product$Type extends MessageType<Product> {
                 case /* uint32 rating */ 7:
                     message.rating = reader.uint32();
                     break;
-                case /* string category_id */ 8:
-                    message.categoryId = reader.string();
+                case /* uint32 category_id */ 8:
+                    message.categoryId = reader.uint32();
                     break;
                 case /* string specification */ 9:
                     message.specification = reader.string();
@@ -165,21 +165,21 @@ class Product$Type extends MessageType<Product> {
         /* string description = 3; */
         if (message.description !== "")
             writer.tag(3, WireType.LengthDelimited).string(message.description);
-        /* string image_id = 4; */
-        if (message.imageId !== "")
+        /* optional string image_id = 4; */
+        if (message.imageId !== undefined)
             writer.tag(4, WireType.LengthDelimited).string(message.imageId);
-        /* string price = 5; */
-        if (message.price !== "")
-            writer.tag(5, WireType.LengthDelimited).string(message.price);
+        /* uint64 price = 5; */
+        if (message.price !== "0")
+            writer.tag(5, WireType.Varint).uint64(message.price);
         /* uint32 currency_id = 6; */
         if (message.currencyId !== 0)
             writer.tag(6, WireType.Varint).uint32(message.currencyId);
         /* uint32 rating = 7; */
         if (message.rating !== 0)
             writer.tag(7, WireType.Varint).uint32(message.rating);
-        /* string category_id = 8; */
-        if (message.categoryId !== "")
-            writer.tag(8, WireType.LengthDelimited).string(message.categoryId);
+        /* uint32 category_id = 8; */
+        if (message.categoryId !== 0)
+            writer.tag(8, WireType.Varint).uint32(message.categoryId);
         /* string specification = 9; */
         if (message.specification !== "")
             writer.tag(9, WireType.LengthDelimited).string(message.specification);

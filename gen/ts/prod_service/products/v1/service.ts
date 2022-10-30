@@ -42,7 +42,7 @@ export interface CreateProductRequest {
     /**
      * Price
      *
-     * @generated from protobuf field: string price = 4;
+     * @generated from protobuf field: uint64 price = 4;
      */
     price: string;
     /**
@@ -60,9 +60,9 @@ export interface CreateProductRequest {
     /**
      * Category ID
      *
-     * @generated from protobuf field: string category_id = 7;
+     * @generated from protobuf field: uint32 category_id = 7;
      */
-    categoryId: string;
+    categoryId: number;
     /**
      * Specification
      *
@@ -128,15 +128,15 @@ class CreateProductRequest$Type extends MessageType<CreateProductRequest> {
             { no: 1, name: "name", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
             { no: 2, name: "description", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
             { no: 3, name: "image_id", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
-            { no: 4, name: "price", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
+            { no: 4, name: "price", kind: "scalar", T: 4 /*ScalarType.UINT64*/ },
             { no: 5, name: "currency_id", kind: "scalar", T: 13 /*ScalarType.UINT32*/ },
             { no: 6, name: "rating", kind: "scalar", T: 13 /*ScalarType.UINT32*/ },
-            { no: 7, name: "category_id", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
+            { no: 7, name: "category_id", kind: "scalar", T: 13 /*ScalarType.UINT32*/ },
             { no: 8, name: "specification", kind: "scalar", T: 9 /*ScalarType.STRING*/ }
         ]);
     }
     create(value?: PartialMessage<CreateProductRequest>): CreateProductRequest {
-        const message = { name: "", description: "", price: "", currencyId: 0, rating: 0, categoryId: "", specification: "" };
+        const message = { name: "", description: "", price: "0", currencyId: 0, rating: 0, categoryId: 0, specification: "" };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<CreateProductRequest>(this, message, value);
@@ -156,8 +156,8 @@ class CreateProductRequest$Type extends MessageType<CreateProductRequest> {
                 case /* optional string image_id */ 3:
                     message.imageId = reader.string();
                     break;
-                case /* string price */ 4:
-                    message.price = reader.string();
+                case /* uint64 price */ 4:
+                    message.price = reader.uint64().toString();
                     break;
                 case /* uint32 currency_id */ 5:
                     message.currencyId = reader.uint32();
@@ -165,8 +165,8 @@ class CreateProductRequest$Type extends MessageType<CreateProductRequest> {
                 case /* uint32 rating */ 6:
                     message.rating = reader.uint32();
                     break;
-                case /* string category_id */ 7:
-                    message.categoryId = reader.string();
+                case /* uint32 category_id */ 7:
+                    message.categoryId = reader.uint32();
                     break;
                 case /* string specification */ 8:
                     message.specification = reader.string();
@@ -192,18 +192,18 @@ class CreateProductRequest$Type extends MessageType<CreateProductRequest> {
         /* optional string image_id = 3; */
         if (message.imageId !== undefined)
             writer.tag(3, WireType.LengthDelimited).string(message.imageId);
-        /* string price = 4; */
-        if (message.price !== "")
-            writer.tag(4, WireType.LengthDelimited).string(message.price);
+        /* uint64 price = 4; */
+        if (message.price !== "0")
+            writer.tag(4, WireType.Varint).uint64(message.price);
         /* uint32 currency_id = 5; */
         if (message.currencyId !== 0)
             writer.tag(5, WireType.Varint).uint32(message.currencyId);
         /* uint32 rating = 6; */
         if (message.rating !== 0)
             writer.tag(6, WireType.Varint).uint32(message.rating);
-        /* string category_id = 7; */
-        if (message.categoryId !== "")
-            writer.tag(7, WireType.LengthDelimited).string(message.categoryId);
+        /* uint32 category_id = 7; */
+        if (message.categoryId !== 0)
+            writer.tag(7, WireType.Varint).uint32(message.categoryId);
         /* string specification = 8; */
         if (message.specification !== "")
             writer.tag(8, WireType.LengthDelimited).string(message.specification);

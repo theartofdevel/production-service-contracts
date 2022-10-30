@@ -122,6 +122,7 @@
         },
         "price": {
           "type": "string",
+          "format": "uint64",
           "title": "Price"
         },
         "currencyId": {
@@ -135,7 +136,8 @@
           "title": "Rating"
         },
         "categoryId": {
-          "type": "string",
+          "type": "integer",
+          "format": "int64",
           "title": "Category ID"
         },
         "specification": {
