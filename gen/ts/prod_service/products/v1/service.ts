@@ -121,6 +121,106 @@ export interface AllProductsResponse {
      */
     products: Product[];
 }
+/**
+ * @generated from protobuf message prod_service.products.v1.ProductByIDRequest
+ */
+export interface ProductByIDRequest {
+    /**
+     * ID
+     *
+     * @generated from protobuf field: string id = 1;
+     */
+    id: string;
+}
+/**
+ * @generated from protobuf message prod_service.products.v1.ProductByIDResponse
+ */
+export interface ProductByIDResponse {
+    /**
+     * @generated from protobuf field: prod_service.products.v1.Product product = 1;
+     */
+    product?: Product;
+}
+/**
+ * @generated from protobuf message prod_service.products.v1.UpdateProductRequest
+ */
+export interface UpdateProductRequest {
+    /**
+     * ID
+     *
+     * @generated from protobuf field: string id = 1;
+     */
+    id: string;
+    /**
+     * Name
+     *
+     * @generated from protobuf field: optional string name = 2;
+     */
+    name?: string;
+    /**
+     * Description
+     *
+     * @generated from protobuf field: optional string description = 3;
+     */
+    description?: string;
+    /**
+     * Image ID
+     *
+     * @generated from protobuf field: optional string image_id = 4;
+     */
+    imageId?: string;
+    /**
+     * Price
+     *
+     * @generated from protobuf field: optional uint64 price = 5;
+     */
+    price?: string;
+    /**
+     * Prince Currency
+     *
+     * @generated from protobuf field: optional uint32 currency_id = 6;
+     */
+    currencyId?: number;
+    /**
+     * Rating
+     *
+     * @generated from protobuf field: optional uint32 rating = 7;
+     */
+    rating?: number;
+    /**
+     * Category ID
+     *
+     * @generated from protobuf field: optional uint32 category_id = 8;
+     */
+    categoryId?: number;
+    /**
+     * Specification
+     *
+     * @generated from protobuf field: optional string specification = 9;
+     */
+    specification?: string;
+}
+/**
+ * @generated from protobuf message prod_service.products.v1.UpdateProductResponse
+ */
+export interface UpdateProductResponse {
+}
+/**
+ * @generated from protobuf message prod_service.products.v1.DeleteProductRequest
+ */
+export interface DeleteProductRequest {
+    /**
+     * ID
+     *
+     * @generated from protobuf field: string id = 1;
+     */
+    id: string;
+}
+/**
+ * @generated from protobuf message prod_service.products.v1.DeleteProductResponse
+ */
+export interface DeleteProductResponse {
+}
 // @generated message type with reflection information, may provide speed optimized methods
 class CreateProductRequest$Type extends MessageType<CreateProductRequest> {
     constructor() {
@@ -400,10 +500,309 @@ class AllProductsResponse$Type extends MessageType<AllProductsResponse> {
  * @generated MessageType for protobuf message prod_service.products.v1.AllProductsResponse
  */
 export const AllProductsResponse = new AllProductsResponse$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class ProductByIDRequest$Type extends MessageType<ProductByIDRequest> {
+    constructor() {
+        super("prod_service.products.v1.ProductByIDRequest", [
+            { no: 1, name: "id", kind: "scalar", T: 9 /*ScalarType.STRING*/ }
+        ]);
+    }
+    create(value?: PartialMessage<ProductByIDRequest>): ProductByIDRequest {
+        const message = { id: "" };
+        globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
+        if (value !== undefined)
+            reflectionMergePartial<ProductByIDRequest>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: ProductByIDRequest): ProductByIDRequest {
+        let message = target ?? this.create(), end = reader.pos + length;
+        while (reader.pos < end) {
+            let [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                case /* string id */ 1:
+                    message.id = reader.string();
+                    break;
+                default:
+                    let u = options.readUnknownField;
+                    if (u === "throw")
+                        throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
+                    let d = reader.skip(wireType);
+                    if (u !== false)
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+            }
+        }
+        return message;
+    }
+    internalBinaryWrite(message: ProductByIDRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* string id = 1; */
+        if (message.id !== "")
+            writer.tag(1, WireType.LengthDelimited).string(message.id);
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message prod_service.products.v1.ProductByIDRequest
+ */
+export const ProductByIDRequest = new ProductByIDRequest$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class ProductByIDResponse$Type extends MessageType<ProductByIDResponse> {
+    constructor() {
+        super("prod_service.products.v1.ProductByIDResponse", [
+            { no: 1, name: "product", kind: "message", T: () => Product }
+        ]);
+    }
+    create(value?: PartialMessage<ProductByIDResponse>): ProductByIDResponse {
+        const message = {};
+        globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
+        if (value !== undefined)
+            reflectionMergePartial<ProductByIDResponse>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: ProductByIDResponse): ProductByIDResponse {
+        let message = target ?? this.create(), end = reader.pos + length;
+        while (reader.pos < end) {
+            let [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                case /* prod_service.products.v1.Product product */ 1:
+                    message.product = Product.internalBinaryRead(reader, reader.uint32(), options, message.product);
+                    break;
+                default:
+                    let u = options.readUnknownField;
+                    if (u === "throw")
+                        throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
+                    let d = reader.skip(wireType);
+                    if (u !== false)
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+            }
+        }
+        return message;
+    }
+    internalBinaryWrite(message: ProductByIDResponse, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* prod_service.products.v1.Product product = 1; */
+        if (message.product)
+            Product.internalBinaryWrite(message.product, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message prod_service.products.v1.ProductByIDResponse
+ */
+export const ProductByIDResponse = new ProductByIDResponse$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class UpdateProductRequest$Type extends MessageType<UpdateProductRequest> {
+    constructor() {
+        super("prod_service.products.v1.UpdateProductRequest", [
+            { no: 1, name: "id", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
+            { no: 2, name: "name", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
+            { no: 3, name: "description", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
+            { no: 4, name: "image_id", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
+            { no: 5, name: "price", kind: "scalar", opt: true, T: 4 /*ScalarType.UINT64*/ },
+            { no: 6, name: "currency_id", kind: "scalar", opt: true, T: 13 /*ScalarType.UINT32*/ },
+            { no: 7, name: "rating", kind: "scalar", opt: true, T: 13 /*ScalarType.UINT32*/ },
+            { no: 8, name: "category_id", kind: "scalar", opt: true, T: 13 /*ScalarType.UINT32*/ },
+            { no: 9, name: "specification", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ }
+        ]);
+    }
+    create(value?: PartialMessage<UpdateProductRequest>): UpdateProductRequest {
+        const message = { id: "" };
+        globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
+        if (value !== undefined)
+            reflectionMergePartial<UpdateProductRequest>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: UpdateProductRequest): UpdateProductRequest {
+        let message = target ?? this.create(), end = reader.pos + length;
+        while (reader.pos < end) {
+            let [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                case /* string id */ 1:
+                    message.id = reader.string();
+                    break;
+                case /* optional string name */ 2:
+                    message.name = reader.string();
+                    break;
+                case /* optional string description */ 3:
+                    message.description = reader.string();
+                    break;
+                case /* optional string image_id */ 4:
+                    message.imageId = reader.string();
+                    break;
+                case /* optional uint64 price */ 5:
+                    message.price = reader.uint64().toString();
+                    break;
+                case /* optional uint32 currency_id */ 6:
+                    message.currencyId = reader.uint32();
+                    break;
+                case /* optional uint32 rating */ 7:
+                    message.rating = reader.uint32();
+                    break;
+                case /* optional uint32 category_id */ 8:
+                    message.categoryId = reader.uint32();
+                    break;
+                case /* optional string specification */ 9:
+                    message.specification = reader.string();
+                    break;
+                default:
+                    let u = options.readUnknownField;
+                    if (u === "throw")
+                        throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
+                    let d = reader.skip(wireType);
+                    if (u !== false)
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+            }
+        }
+        return message;
+    }
+    internalBinaryWrite(message: UpdateProductRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* string id = 1; */
+        if (message.id !== "")
+            writer.tag(1, WireType.LengthDelimited).string(message.id);
+        /* optional string name = 2; */
+        if (message.name !== undefined)
+            writer.tag(2, WireType.LengthDelimited).string(message.name);
+        /* optional string description = 3; */
+        if (message.description !== undefined)
+            writer.tag(3, WireType.LengthDelimited).string(message.description);
+        /* optional string image_id = 4; */
+        if (message.imageId !== undefined)
+            writer.tag(4, WireType.LengthDelimited).string(message.imageId);
+        /* optional uint64 price = 5; */
+        if (message.price !== undefined)
+            writer.tag(5, WireType.Varint).uint64(message.price);
+        /* optional uint32 currency_id = 6; */
+        if (message.currencyId !== undefined)
+            writer.tag(6, WireType.Varint).uint32(message.currencyId);
+        /* optional uint32 rating = 7; */
+        if (message.rating !== undefined)
+            writer.tag(7, WireType.Varint).uint32(message.rating);
+        /* optional uint32 category_id = 8; */
+        if (message.categoryId !== undefined)
+            writer.tag(8, WireType.Varint).uint32(message.categoryId);
+        /* optional string specification = 9; */
+        if (message.specification !== undefined)
+            writer.tag(9, WireType.LengthDelimited).string(message.specification);
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message prod_service.products.v1.UpdateProductRequest
+ */
+export const UpdateProductRequest = new UpdateProductRequest$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class UpdateProductResponse$Type extends MessageType<UpdateProductResponse> {
+    constructor() {
+        super("prod_service.products.v1.UpdateProductResponse", []);
+    }
+    create(value?: PartialMessage<UpdateProductResponse>): UpdateProductResponse {
+        const message = {};
+        globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
+        if (value !== undefined)
+            reflectionMergePartial<UpdateProductResponse>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: UpdateProductResponse): UpdateProductResponse {
+        return target ?? this.create();
+    }
+    internalBinaryWrite(message: UpdateProductResponse, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message prod_service.products.v1.UpdateProductResponse
+ */
+export const UpdateProductResponse = new UpdateProductResponse$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class DeleteProductRequest$Type extends MessageType<DeleteProductRequest> {
+    constructor() {
+        super("prod_service.products.v1.DeleteProductRequest", [
+            { no: 1, name: "id", kind: "scalar", T: 9 /*ScalarType.STRING*/ }
+        ]);
+    }
+    create(value?: PartialMessage<DeleteProductRequest>): DeleteProductRequest {
+        const message = { id: "" };
+        globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
+        if (value !== undefined)
+            reflectionMergePartial<DeleteProductRequest>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: DeleteProductRequest): DeleteProductRequest {
+        let message = target ?? this.create(), end = reader.pos + length;
+        while (reader.pos < end) {
+            let [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                case /* string id */ 1:
+                    message.id = reader.string();
+                    break;
+                default:
+                    let u = options.readUnknownField;
+                    if (u === "throw")
+                        throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
+                    let d = reader.skip(wireType);
+                    if (u !== false)
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+            }
+        }
+        return message;
+    }
+    internalBinaryWrite(message: DeleteProductRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* string id = 1; */
+        if (message.id !== "")
+            writer.tag(1, WireType.LengthDelimited).string(message.id);
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message prod_service.products.v1.DeleteProductRequest
+ */
+export const DeleteProductRequest = new DeleteProductRequest$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class DeleteProductResponse$Type extends MessageType<DeleteProductResponse> {
+    constructor() {
+        super("prod_service.products.v1.DeleteProductResponse", []);
+    }
+    create(value?: PartialMessage<DeleteProductResponse>): DeleteProductResponse {
+        const message = {};
+        globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
+        if (value !== undefined)
+            reflectionMergePartial<DeleteProductResponse>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: DeleteProductResponse): DeleteProductResponse {
+        return target ?? this.create();
+    }
+    internalBinaryWrite(message: DeleteProductResponse, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message prod_service.products.v1.DeleteProductResponse
+ */
+export const DeleteProductResponse = new DeleteProductResponse$Type();
 /**
  * @generated ServiceType for protobuf service prod_service.products.v1.ProductService
  */
 export const ProductService = new ServiceType("prod_service.products.v1.ProductService", [
+    { name: "AllProducts", options: {}, I: AllProductsRequest, O: AllProductsResponse },
+    { name: "ProductByID", options: {}, I: ProductByIDRequest, O: ProductByIDResponse },
     { name: "CreateProduct", options: {}, I: CreateProductRequest, O: CreateProductResponse },
-    { name: "AllProducts", options: {}, I: AllProductsRequest, O: AllProductsResponse }
+    { name: "UpdateProduct", options: {}, I: UpdateProductRequest, O: UpdateProductResponse },
+    { name: "DeleteProduct", options: {}, I: DeleteProductRequest, O: DeleteProductResponse }
 ]);

@@ -63,6 +63,9 @@
         }
       }
     },
+    "v1DeleteProductResponse": {
+      "type": "object"
+    },
     "v1IntFieldFilter": {
       "type": "object",
       "properties": {
@@ -156,6 +159,14 @@
         }
       }
     },
+    "v1ProductByIDResponse": {
+      "type": "object",
+      "properties": {
+        "product": {
+          "$ref": "#/definitions/v1Product"
+        }
+      }
+    },
     "v1Sort": {
       "type": "object",
       "properties": {
@@ -186,6 +197,9 @@
         "OPERATOR_LIKE"
       ],
       "default": "OPERATOR_UNSPECIFIED"
+    },
+    "v1UpdateProductResponse": {
+      "type": "object"
     }
   }
 }

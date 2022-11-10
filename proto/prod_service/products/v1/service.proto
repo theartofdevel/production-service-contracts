@@ -9,8 +9,11 @@ import "common/filter/v1/sort.proto";
 import "prod_service/products/v1/product.proto";
 
 service ProductService {
-  rpc CreateProduct(CreateProductRequest) returns (CreateProductResponse) {}
   rpc AllProducts(AllProductsRequest) returns (AllProductsResponse) {}
+  rpc ProductByID(ProductByIDRequest) returns (ProductByIDResponse) {}
+  rpc CreateProduct(CreateProductRequest) returns (CreateProductResponse) {}
+  rpc UpdateProduct(UpdateProductRequest) returns (UpdateProductResponse) {}
+  rpc DeleteProduct(DeleteProductRequest) returns (DeleteProductResponse) {}
 }
 
 message CreateProductRequest {
@@ -49,3 +52,42 @@ message AllProductsRequest {
 message AllProductsResponse {
   repeated Product products = 1;
 }
+
+message ProductByIDRequest {
+  // ID
+  string id = 1;
+}
+
+message ProductByIDResponse {
+  Product product = 1;
+}
+
+message UpdateProductRequest {
+  // ID
+  string id = 1;
+  // Name
+  optional string name = 2;
+  // Description
+  optional string description = 3;
+  // Image ID
+  optional string image_id = 4;
+  // Price
+  optional uint64 price = 5;
+  // Prince Currency
+  optional uint32 currency_id = 6;
+  // Rating
+  optional uint32 rating = 7;
+  // Category ID
+  optional uint32 category_id = 8;
+  // Specification
+  optional string specification = 9;
+}
+
+message UpdateProductResponse {}
+
+message DeleteProductRequest {
+  // ID
+  string id = 1;
+}
+
+message DeleteProductResponse {}
