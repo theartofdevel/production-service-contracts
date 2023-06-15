@@ -24,15 +24,13 @@ message CreateProductRequest {
   // Image ID
   optional string image_id = 3;
   // Price
-  uint64 price = 4;
+  string price = 4;
   // Prince Currency
   uint32 currency_id = 5;
   // Rating
   uint32 rating = 6;
   // Category ID
   uint32 category_id = 7;
-  // Specification
-  string specification = 8;
 }
 
 message CreateProductResponse {
@@ -72,15 +70,13 @@ message UpdateProductRequest {
   // Image ID
   optional string image_id = 4;
   // Price
-  optional uint64 price = 5;
+  optional string price = 5;
   // Prince Currency
   optional uint32 currency_id = 6;
   // Rating
   optional uint32 rating = 7;
   // Category ID
   optional uint32 category_id = 8;
-  // Specification
-  optional string specification = 9;
 }
 
 message UpdateProductResponse {}

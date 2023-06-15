@@ -42,7 +42,7 @@ export interface CreateProductRequest {
     /**
      * Price
      *
-     * @generated from protobuf field: uint64 price = 4;
+     * @generated from protobuf field: string price = 4;
      */
     price: string;
     /**
@@ -63,12 +63,6 @@ export interface CreateProductRequest {
      * @generated from protobuf field: uint32 category_id = 7;
      */
     categoryId: number;
-    /**
-     * Specification
-     *
-     * @generated from protobuf field: string specification = 8;
-     */
-    specification: string;
 }
 /**
  * @generated from protobuf message prod_service.products.v1.CreateProductResponse
@@ -172,7 +166,7 @@ export interface UpdateProductRequest {
     /**
      * Price
      *
-     * @generated from protobuf field: optional uint64 price = 5;
+     * @generated from protobuf field: optional string price = 5;
      */
     price?: string;
     /**
@@ -193,12 +187,6 @@ export interface UpdateProductRequest {
      * @generated from protobuf field: optional uint32 category_id = 8;
      */
     categoryId?: number;
-    /**
-     * Specification
-     *
-     * @generated from protobuf field: optional string specification = 9;
-     */
-    specification?: string;
 }
 /**
  * @generated from protobuf message prod_service.products.v1.UpdateProductResponse
@@ -228,15 +216,14 @@ class CreateProductRequest$Type extends MessageType<CreateProductRequest> {
             { no: 1, name: "name", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
             { no: 2, name: "description", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
             { no: 3, name: "image_id", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
-            { no: 4, name: "price", kind: "scalar", T: 4 /*ScalarType.UINT64*/ },
+            { no: 4, name: "price", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
             { no: 5, name: "currency_id", kind: "scalar", T: 13 /*ScalarType.UINT32*/ },
             { no: 6, name: "rating", kind: "scalar", T: 13 /*ScalarType.UINT32*/ },
-            { no: 7, name: "category_id", kind: "scalar", T: 13 /*ScalarType.UINT32*/ },
-            { no: 8, name: "specification", kind: "scalar", T: 9 /*ScalarType.STRING*/ }
+            { no: 7, name: "category_id", kind: "scalar", T: 13 /*ScalarType.UINT32*/ }
         ]);
     }
     create(value?: PartialMessage<CreateProductRequest>): CreateProductRequest {
-        const message = { name: "", description: "", price: "0", currencyId: 0, rating: 0, categoryId: 0, specification: "" };
+        const message = { name: "", description: "", price: "", currencyId: 0, rating: 0, categoryId: 0 };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<CreateProductRequest>(this, message, value);
@@ -256,8 +243,8 @@ class CreateProductRequest$Type extends MessageType<CreateProductRequest> {
                 case /* optional string image_id */ 3:
                     message.imageId = reader.string();
                     break;
-                case /* uint64 price */ 4:
-                    message.price = reader.uint64().toString();
+                case /* string price */ 4:
+                    message.price = reader.string();
                     break;
                 case /* uint32 currency_id */ 5:
                     message.currencyId = reader.uint32();
@@ -267,9 +254,6 @@ class CreateProductRequest$Type extends MessageType<CreateProductRequest> {
                     break;
                 case /* uint32 category_id */ 7:
                     message.categoryId = reader.uint32();
-                    break;
-                case /* string specification */ 8:
-                    message.specification = reader.string();
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -292,9 +276,9 @@ class CreateProductRequest$Type extends MessageType<CreateProductRequest> {
         /* optional string image_id = 3; */
         if (message.imageId !== undefined)
             writer.tag(3, WireType.LengthDelimited).string(message.imageId);
-        /* uint64 price = 4; */
-        if (message.price !== "0")
-            writer.tag(4, WireType.Varint).uint64(message.price);
+        /* string price = 4; */
+        if (message.price !== "")
+            writer.tag(4, WireType.LengthDelimited).string(message.price);
         /* uint32 currency_id = 5; */
         if (message.currencyId !== 0)
             writer.tag(5, WireType.Varint).uint32(message.currencyId);
@@ -304,9 +288,6 @@ class CreateProductRequest$Type extends MessageType<CreateProductRequest> {
         /* uint32 category_id = 7; */
         if (message.categoryId !== 0)
             writer.tag(7, WireType.Varint).uint32(message.categoryId);
-        /* string specification = 8; */
-        if (message.specification !== "")
-            writer.tag(8, WireType.LengthDelimited).string(message.specification);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -602,11 +583,10 @@ class UpdateProductRequest$Type extends MessageType<UpdateProductRequest> {
             { no: 2, name: "name", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
             { no: 3, name: "description", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
             { no: 4, name: "image_id", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
-            { no: 5, name: "price", kind: "scalar", opt: true, T: 4 /*ScalarType.UINT64*/ },
+            { no: 5, name: "price", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
             { no: 6, name: "currency_id", kind: "scalar", opt: true, T: 13 /*ScalarType.UINT32*/ },
             { no: 7, name: "rating", kind: "scalar", opt: true, T: 13 /*ScalarType.UINT32*/ },
-            { no: 8, name: "category_id", kind: "scalar", opt: true, T: 13 /*ScalarType.UINT32*/ },
-            { no: 9, name: "specification", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ }
+            { no: 8, name: "category_id", kind: "scalar", opt: true, T: 13 /*ScalarType.UINT32*/ }
         ]);
     }
     create(value?: PartialMessage<UpdateProductRequest>): UpdateProductRequest {
@@ -633,8 +613,8 @@ class UpdateProductRequest$Type extends MessageType<UpdateProductRequest> {
                 case /* optional string image_id */ 4:
                     message.imageId = reader.string();
                     break;
-                case /* optional uint64 price */ 5:
-                    message.price = reader.uint64().toString();
+                case /* optional string price */ 5:
+                    message.price = reader.string();
                     break;
                 case /* optional uint32 currency_id */ 6:
                     message.currencyId = reader.uint32();
@@ -644,9 +624,6 @@ class UpdateProductRequest$Type extends MessageType<UpdateProductRequest> {
                     break;
                 case /* optional uint32 category_id */ 8:
                     message.categoryId = reader.uint32();
-                    break;
-                case /* optional string specification */ 9:
-                    message.specification = reader.string();
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -672,9 +649,9 @@ class UpdateProductRequest$Type extends MessageType<UpdateProductRequest> {
         /* optional string image_id = 4; */
         if (message.imageId !== undefined)
             writer.tag(4, WireType.LengthDelimited).string(message.imageId);
-        /* optional uint64 price = 5; */
+        /* optional string price = 5; */
         if (message.price !== undefined)
-            writer.tag(5, WireType.Varint).uint64(message.price);
+            writer.tag(5, WireType.LengthDelimited).string(message.price);
         /* optional uint32 currency_id = 6; */
         if (message.currencyId !== undefined)
             writer.tag(6, WireType.Varint).uint32(message.currencyId);
@@ -684,9 +661,6 @@ class UpdateProductRequest$Type extends MessageType<UpdateProductRequest> {
         /* optional uint32 category_id = 8; */
         if (message.categoryId !== undefined)
             writer.tag(8, WireType.Varint).uint32(message.categoryId);
-        /* optional string specification = 9; */
-        if (message.specification !== undefined)
-            writer.tag(9, WireType.LengthDelimited).string(message.specification);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
