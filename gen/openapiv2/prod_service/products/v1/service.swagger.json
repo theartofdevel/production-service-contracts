@@ -125,7 +125,6 @@
         },
         "price": {
           "type": "string",
-          "format": "uint64",
           "title": "Price"
         },
         "currencyId": {

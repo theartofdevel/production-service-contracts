@@ -14,7 +14,7 @@ message Product {
   // Image ID
   optional string image_id = 4;
   // Price
-  uint64 price = 5;
+  string price = 5;
   // Prince Currency
   uint32 currency_id = 6;
   // Rating

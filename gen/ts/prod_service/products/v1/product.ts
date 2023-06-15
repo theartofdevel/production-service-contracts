@@ -42,7 +42,7 @@ export interface Product {
     /**
      * Price
      *
-     * @generated from protobuf field: uint64 price = 5;
+     * @generated from protobuf field: string price = 5;
      */
     price: string;
     /**
@@ -90,7 +90,7 @@ class Product$Type extends MessageType<Product> {
             { no: 2, name: "name", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
             { no: 3, name: "description", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
             { no: 4, name: "image_id", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
-            { no: 5, name: "price", kind: "scalar", T: 4 /*ScalarType.UINT64*/ },
+            { no: 5, name: "price", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
             { no: 6, name: "currency_id", kind: "scalar", T: 13 /*ScalarType.UINT32*/ },
             { no: 7, name: "rating", kind: "scalar", T: 13 /*ScalarType.UINT32*/ },
             { no: 8, name: "category_id", kind: "scalar", T: 13 /*ScalarType.UINT32*/ },
@@ -100,7 +100,7 @@ class Product$Type extends MessageType<Product> {
         ]);
     }
     create(value?: PartialMessage<Product>): Product {
-        const message = { id: "", name: "", description: "", price: "0", currencyId: 0, rating: 0, categoryId: 0, specification: "", updatedAt: "0", createdAt: "0" };
+        const message = { id: "", name: "", description: "", price: "", currencyId: 0, rating: 0, categoryId: 0, specification: "", updatedAt: "0", createdAt: "0" };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<Product>(this, message, value);
@@ -123,8 +123,8 @@ class Product$Type extends MessageType<Product> {
                 case /* optional string image_id */ 4:
                     message.imageId = reader.string();
                     break;
-                case /* uint64 price */ 5:
-                    message.price = reader.uint64().toString();
+                case /* string price */ 5:
+                    message.price = reader.string();
                     break;
                 case /* uint32 currency_id */ 6:
                     message.currencyId = reader.uint32();
@@ -168,9 +168,9 @@ class Product$Type extends MessageType<Product> {
         /* optional string image_id = 4; */
         if (message.imageId !== undefined)
             writer.tag(4, WireType.LengthDelimited).string(message.imageId);
-        /* uint64 price = 5; */
-        if (message.price !== "0")
-            writer.tag(5, WireType.Varint).uint64(message.price);
+        /* string price = 5; */
+        if (message.price !== "")
+            writer.tag(5, WireType.LengthDelimited).string(message.price);
         /* uint32 currency_id = 6; */
         if (message.currencyId !== 0)
             writer.tag(6, WireType.Varint).uint32(message.currencyId);
