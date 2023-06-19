@@ -24,7 +24,7 @@ message Product {
   // Specification
   string specification = 9;
   // Updated at
-  int64 updated_at = 10;
+  optional int64 updated_at = 10;
   // Create at
   int64 created_at = 11;
 }

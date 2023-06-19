@@ -72,9 +72,9 @@ export interface Product {
     /**
      * Updated at
      *
-     * @generated from protobuf field: int64 updated_at = 10;
+     * @generated from protobuf field: optional int64 updated_at = 10;
      */
-    updatedAt: string;
+    updatedAt?: string;
     /**
      * Create at
      *
@@ -95,12 +95,12 @@ class Product$Type extends MessageType<Product> {
             { no: 7, name: "rating", kind: "scalar", T: 13 /*ScalarType.UINT32*/ },
             { no: 8, name: "category_id", kind: "scalar", T: 13 /*ScalarType.UINT32*/ },
             { no: 9, name: "specification", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
-            { no: 10, name: "updated_at", kind: "scalar", T: 3 /*ScalarType.INT64*/ },
+            { no: 10, name: "updated_at", kind: "scalar", opt: true, T: 3 /*ScalarType.INT64*/ },
             { no: 11, name: "created_at", kind: "scalar", T: 3 /*ScalarType.INT64*/ }
         ]);
     }
     create(value?: PartialMessage<Product>): Product {
-        const message = { id: "", name: "", description: "", price: "", currencyId: 0, rating: 0, categoryId: 0, specification: "", updatedAt: "0", createdAt: "0" };
+        const message = { id: "", name: "", description: "", price: "", currencyId: 0, rating: 0, categoryId: 0, specification: "", createdAt: "0" };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<Product>(this, message, value);
@@ -138,7 +138,7 @@ class Product$Type extends MessageType<Product> {
                 case /* string specification */ 9:
                     message.specification = reader.string();
                     break;
-                case /* int64 updated_at */ 10:
+                case /* optional int64 updated_at */ 10:
                     message.updatedAt = reader.int64().toString();
                     break;
                 case /* int64 created_at */ 11:
@@ -183,8 +183,8 @@ class Product$Type extends MessageType<Product> {
         /* string specification = 9; */
         if (message.specification !== "")
             writer.tag(9, WireType.LengthDelimited).string(message.specification);
-        /* int64 updated_at = 10; */
-        if (message.updatedAt !== "0")
+        /* optional int64 updated_at = 10; */
+        if (message.updatedAt !== undefined)
             writer.tag(10, WireType.Varint).int64(message.updatedAt);
         /* int64 created_at = 11; */
         if (message.createdAt !== "0")
